@@ -12,7 +12,7 @@ const Header = () => {
     <header className="sticky top-0 z-30 bg-white/80 backdrop-blur border-b border-slate-200">
       <div className="max-w-6xl mx-auto h-20 px-6 flex items-center justify-between">
         <NavLink to="/" className="text-lg font-semibold text-slate-900">
-          YourName
+          preferchoi
         </NavLink>
         <nav className="flex items-center gap-6 text-sm font-medium text-slate-700">
           {navItems.map((item) => (
