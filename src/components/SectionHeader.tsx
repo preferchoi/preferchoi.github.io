@@ -1,0 +1,15 @@
+interface SectionHeaderProps {
+  title: string;
+  subtitle?: string;
+}
+
+const SectionHeader = ({ title, subtitle }: SectionHeaderProps) => {
+  return (
+    <div className="space-y-2">
+      <h2 className="text-3xl font-semibold text-slate-900">{title}</h2>
+      {subtitle && <p className="text-slate-600 max-w-2xl">{subtitle}</p>}
+    </div>
+  );
+};
+
+export default SectionHeader;
