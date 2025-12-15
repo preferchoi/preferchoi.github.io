@@ -8,7 +8,7 @@ interface SkillsSectionProps {
 
 const SkillsSection = ({ categories }: SkillsSectionProps) => {
   return (
-    <section className="py-24 bg-white/70">
+    <section className="py-24 bg-surface dark:bg-surface-dark transition-colors">
       <div className="max-w-6xl mx-auto px-6 space-y-10">
         <SectionHeader title="Skills" subtitle="Tools and technologies I enjoy using to build meaningful products." />
         <div className="space-y-8">

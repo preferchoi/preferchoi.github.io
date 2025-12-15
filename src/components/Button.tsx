@@ -3,32 +3,28 @@ import { Link } from 'react-router-dom';
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'ghost';
   to?: string;
+  as?: React.ElementType;
 }
 
 const baseClasses =
   'inline-flex items-center justify-center rounded-full px-5 py-2 text-sm font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary';
 
 const variantStyles: Record<NonNullable<ButtonProps['variant']>, string> = {
-  primary: 'bg-primary text-white hover:bg-primary/90 shadow-sm dark:text-slate-950',
-  ghost: 'border border-slate-300 text-slate-800 hover:bg-slate-100 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800'
+  primary:
+    'bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm dark:bg-primary-dark dark:text-primary-foreground dark:hover:bg-primary-dark/90',
+  ghost:
+    'border border-border text-foreground hover:bg-primary/10 hover:text-primary dark:border-border dark:text-foreground-dark dark:hover:bg-primary-dark/20 dark:hover:text-primary'
 };
 
-const Button = ({ children, variant = 'primary', to, className = '', ...rest }: ButtonProps) => {
+const Button = ({ children, variant = 'primary', to, className = '', as, ...rest }: ButtonProps) => {
   const classes = `${baseClasses} ${variantStyles[variant]} ${className}`;
 
-  if (to) {
-    return (
-      <Link to={to} className={classes}>
-        {children}
-      </Link>
-    );
-  }
+  const Component = (as ?? (to ? Link : 'button')) as React.ElementType;
+  const componentProps = { ...rest, className: classes } as Record<string, unknown>;
 
-  return (
-    <button className={classes} {...rest}>
-      {children}
-    </button>
-  );
+  if (to) componentProps.to = to;
+
+  return <Component {...componentProps}>{children}</Component>;
 };
 
 export default Button;

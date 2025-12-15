@@ -9,14 +9,20 @@ interface ProjectCardProps {
 const ProjectCard = ({ project }: ProjectCardProps) => {
   const cardBackground = project.highlight
     ? 'border-primary/30 bg-primary/5 shadow-md shadow-primary/5 dark:border-primary/40 dark:bg-primary/10'
-    : 'border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900';
+    : 'border-border bg-card shadow-sm dark:border-border dark:bg-card-dark';
+
+  const badgeTone = project.badge === 'Featured'
+    ? 'bg-amber-100 text-amber-800 dark:bg-amber-800 dark:text-amber-100'
+    : 'bg-green-100 text-green-800 dark:bg-green-800 dark:text-green-100';
 
   return (
     <article
       className={`relative rounded-2xl border transition duration-200 hover:-translate-y-1 hover:shadow-lg ${cardBackground}`}
     >
       {project.badge && (
-        <span className="absolute left-4 top-4 inline-flex items-center rounded-full bg-secondary/80 px-3 py-1 text-xs font-semibold text-slate-900 shadow-sm dark:bg-secondary/60">
+        <span
+          className={`absolute left-4 top-4 inline-block px-2 py-0.5 rounded-md text-xs font-medium shadow-sm ${badgeTone}`}
+        >
           {project.badge}
         </span>
       )}
@@ -33,8 +39,8 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
       </div>
       <div className="space-y-3 p-5">
         <div className="space-y-1">
-          <h3 className="text-xl font-semibold text-slate-900 dark:text-slate-50">{project.title}</h3>
-          <p className="text-sm text-slate-600 line-clamp-2 dark:text-slate-300">{project.shortDescription}</p>
+          <h3 className="text-xl font-semibold text-foreground dark:text-foreground-dark">{project.title}</h3>
+          <p className="text-sm text-muted-foreground line-clamp-2">{project.shortDescription}</p>
         </div>
         <div className="flex flex-wrap gap-2">
           {project.techStack.map((tech) => (
