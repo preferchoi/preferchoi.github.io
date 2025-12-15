@@ -8,10 +8,10 @@ const HeroSection = () => {
         <div className="space-y-6">
           <Tag>Backend & Web Developer</Tag>
           <div className="space-y-4">
-            <h1 className="text-4xl sm:text-5xl font-bold text-slate-900 leading-tight">
+            <h1 className="text-4xl sm:text-5xl font-bold leading-tight text-slate-900 dark:text-slate-50">
               Crafting scalable web experiences and resilient backend systems.
             </h1>
-            <p className="text-lg text-slate-600 max-w-2xl">
+            <p className="text-lg text-slate-600 dark:text-slate-300 max-w-2xl">
               I design and build modern applications with a focus on maintainable code, intuitive interfaces, and smooth user
               journeys.
             </p>
@@ -24,7 +24,7 @@ const HeroSection = () => {
           </div>
         </div>
         <div className="lg:justify-self-end w-full">
-          <div className="w-full aspect-square max-w-md lg:max-w-full lg:aspect-[4/3] rounded-3xl bg-gradient-to-br from-indigo-100 via-white to-indigo-200 border border-slate-200 shadow-inner" />
+          <div className="w-full aspect-square max-w-md lg:max-w-full lg:aspect-[4/3] rounded-3xl bg-gradient-to-br from-primary/20 via-white to-secondary/20 border border-slate-200 shadow-inner dark:border-slate-800 dark:via-slate-900" />
         </div>
       </div>
     </section>
