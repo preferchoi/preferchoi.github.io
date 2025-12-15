@@ -2,6 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  @apply antialiased bg-gray-50 text-slate-900;
+:root {
+  color-scheme: light;
+  --color-primary: 124 58 237;
+  --color-secondary: 37 99 235;
+}
+
+.dark {
+  color-scheme: dark;
+  --color-primary: 14 165 233;
+  --color-secondary: 251 146 60;
+}
+
+@layer base {
+  body {
+    @apply min-h-screen bg-gray-50 text-slate-900 antialiased dark:bg-gray-950 dark:text-slate-100;
+  }
+
+  a {
+    @apply transition-colors;
+  }
 }
