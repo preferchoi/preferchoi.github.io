@@ -1,11 +1,10 @@
 import { useMemo, useState } from 'react';
-import Button from '../components/Button';
 import ProjectCard from '../components/ProjectCard';
 import SectionHeader from '../components/SectionHeader';
 import projects, { type Project } from '../data/projects';
 
 const Projects = () => {
-  const [filter, setFilter] = useState<string>('All');
+  const [currentFilter, setCurrentFilter] = useState<string>('All');
 
   const categories = useMemo(
     () => [
@@ -22,8 +21,8 @@ const Projects = () => {
   );
 
   const filteredProjects = useMemo(
-    () => (filter === 'All' ? projects : projects.filter((project) => project.category === filter)),
-    [filter]
+    () => (currentFilter === 'All' ? projects : projects.filter((project) => project.category === currentFilter)),
+    [currentFilter]
   );
 
   return (
@@ -32,16 +31,24 @@ const Projects = () => {
         <SectionHeader title="Projects" subtitle="All of my work in one place" />
 
         <div className="flex flex-wrap gap-3" aria-label="Project filters">
-          {categories.map((category) => (
-            <Button
-              key={category}
-              variant={filter === category ? 'primary' : 'ghost'}
-              onClick={() => setFilter(category)}
-              className={filter === category ? '' : 'text-slate-700 dark:text-slate-200'}
-            >
-              {category}
-            </Button>
-          ))}
+          {categories.map((category) => {
+            const isActive = currentFilter === category;
+
+            return (
+              <button
+                key={category}
+                type="button"
+                onClick={() => setCurrentFilter(category)}
+                className={`px-4 py-2 rounded-full border border-primary/20 text-sm transition-colors ${
+                  isActive
+                    ? 'bg-primary text-primary-foreground dark:bg-primary-dark'
+                    : 'text-muted-foreground hover:bg-primary/10 hover:text-primary dark:hover:bg-primary-dark/20 dark:hover:text-primary'
+                }`}
+              >
+                {category}
+              </button>
+            );
+          })}
         </div>
 
         <ul className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3" aria-label="Project list">

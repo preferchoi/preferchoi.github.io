@@ -5,18 +5,44 @@
 :root {
   color-scheme: light;
   --color-primary: 124 58 237;
+  --color-primary-dark: 99 102 241;
+  --color-primary-foreground: 255 255 255;
   --color-secondary: 37 99 235;
+  --color-background: 248 250 252;
+  --color-background-dark: 2 6 23;
+  --color-surface: 255 255 255;
+  --color-surface-dark: 15 23 42;
+  --color-card: 255 255 255;
+  --color-card-dark: 15 23 42;
+  --color-muted: 241 245 249;
+  --color-muted-foreground: 100 116 139;
+  --color-border: 226 232 240;
+  --color-foreground: 15 23 42;
+  --color-foreground-dark: 226 232 240;
 }
 
 .dark {
   color-scheme: dark;
   --color-primary: 14 165 233;
+  --color-primary-dark: 14 165 233;
+  --color-primary-foreground: 255 255 255;
   --color-secondary: 251 146 60;
+  --color-background: 2 6 23;
+  --color-background-dark: 2 6 23;
+  --color-surface: 15 23 42;
+  --color-surface-dark: 15 23 42;
+  --color-card: 15 23 42;
+  --color-card-dark: 15 23 42;
+  --color-muted: 30 41 59;
+  --color-muted-foreground: 148 163 184;
+  --color-border: 51 65 85;
+  --color-foreground: 226 232 240;
+  --color-foreground-dark: 226 232 240;
 }
 
 @layer base {
   body {
-    @apply min-h-screen bg-gray-50 text-slate-900 antialiased dark:bg-gray-950 dark:text-slate-100;
+    @apply min-h-screen bg-background text-foreground antialiased transition-colors dark:bg-background-dark dark:text-foreground-dark;
   }
 
   a {

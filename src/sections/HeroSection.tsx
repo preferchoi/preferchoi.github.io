@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import Button from '../components/Button';
 import Tag from '../components/Tag';
 
@@ -17,7 +18,14 @@ const HeroSection = () => {
             </p>
           </div>
           <div className="flex flex-wrap gap-3">
-            <Button to="/projects">View Projects</Button>
+            <Button
+              variant="primary"
+              as={Link}
+              to="/projects"
+              className="bg-primary text-primary-foreground hover:bg-primary/90 dark:bg-primary-dark dark:text-primary-foreground"
+            >
+              View Projects
+            </Button>
             <Button to="/about" variant="ghost">
               About Me
             </Button>
